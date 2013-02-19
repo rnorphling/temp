@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>~</title>
+		<meta name="viewport" content="width=device-width" />
+		<link href="style.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="span8 offset2">
+					<div class="page-header">
+						<h1>~</h1>
+					</div>
+					<form action="uploader.php" id="hl7-form" class="form-horizontal" enctype="multipart/form-data" method="post" >
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label" for="patient_id">Patient ID</label>
+								<div class="controls">
+									<input class="input-large" type="text" name="patient_id" id="patient_id" maxlength="8" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="action">Action</label>
+								<div class="controls">
+									<select name="action" id="action">
+										<option value="insert">insert</option>
+										<option value="update">update</option>
+										<option value="delete">delete</option>
+									</select>
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="uuid">UUID</label>
+								<div class="controls">
+									<input type="text" class="input-large" name="uuid" id="uuid" maxlength="20" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="modality_code">Modality Code</label>
+								<div class="controls">
+									<input type="text" class="input-large" name="modality_code" id="modality_code" maxlength="10" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="exam_date">Exam Date</label>
+								<div class="controls">
+									<input type="text" class="input-large" name="exam_date" id="exam_date" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="study_date">Study Date</label>
+								<div class="controls">
+									<input type="text" class="input-large" name="study_date" id="study_date" />
+								</div>
+							</div>
+							<div class="control-group">
+								<label class="control-label" for="pdf_report">PDF Report</label>
+								<div class="controls">
+									<input type="file" class="input-large" name="pdf_report" id="pdf_report" />
+								</div>
+							</div>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-primary" id="submit_button">Submit</button>
+								<button type="reset" class="btn">Cancel</button>
+							</div>
+							<div id="upload_result">Row 12 is uploaded successfully!</div>
+						</fieldset>
+					</form>
+				</div>
+				<!-- .span -->
+			</div>
+			<!-- .row -->
+		</div>
+		<!-- .container -->
+		<!-- ==============================================
+			JavaScript below! 															-->
+		<!-- jQuery via Google + local fallback, see h5bp.com -->
+		<script src="assets/js/jquery-1.7.1.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="assets/js/bootstrap.min.js"></script>
+		<!-- Validate plugin -->
+		<script src="assets/js/jquery.validate.min.js"></script>
+		<script src="assets/js/jquery.form.js"></script>
+		<!-- Prettify plugin -->
+		<!-- Scripts specific to this page -->
+		<script src="script.js"></script>
+	</body>
+</html>

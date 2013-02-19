@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Healthscan HL7 Portal</title>
+    <!-- include jquery library file-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" type="text/css" >
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Healthscan HL7 Portal</h1>
+        </div>
+        <form action="uploader.php" id="upload_form" enctype="multipart/form-data" method="post" >
+            <div class="row">
+                <div class="span3">
+                    <h4>Patient ID</h4>
+                    <input class="input-block-level" type="text" name="patient_id" id="patient_id" value="90500021" maxlength="8"/>
+
+                    <h4>Action</h4>
+                    <select name="action" id="action">
+                        <option value="insert">insert</option>
+                        <option value="update">update</option>
+                        <option value="delete">delete</option>
+                    </select>
+
+                    <h4>UUID</h4>
+                    <input class="input-block-level" type="text" name="uuid" id="uuid" maxlength="20"/>
+
+                    <h4>Modality Code</h4>
+                    <input class="input-block-level" type="text" name="modality_code" id="modality_code" maxlength="10"/>
+                </div>
+                <div class="span3">
+                    <h4>Exam Date</h4>
+                    <input class="input-block-level" type="text" name="exam_date" id="exam_date" value="2013-01-13 09:00:00"/>
+
+                    <h4>Study Date</h4>
+                    <input class="input-block-level" type="text" name="study_date" id="study_date" value="2013-01-13 09:00:00"/>
+
+                    <h4>PDF Report</h4>
+                    <input class="input-block-level" type="file" name="pdf_report" id="pdf_report" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <button type="submit" class="btn btn-primary btn-large" id="uploadButton">Upload</button>
+                    <hr class="bs-docs-separator">
+                    <div id="upload_result">Row 12 is uploaded successfully!</div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script>
+    $(document).ready(function()
+    {
+        $('#upload_form').on('submit', function(e)
+        {
+            e.preventDefault();
+        $('#uploadButton').attr('disabled', ''); // disable upload button
+        //show uploading message
+        $("#upload_result").html('<div style="padding:10px"><img src="images/ajax-loader.gif" alt="Please Wait"/> <span>Uploading...</span></div>');
+        $("#upload_result").hide();
+        $("#upload_result").fadeIn(1000);
+        $(this).ajaxSubmit({
+            target: '#upload_result',
+        success:  afterSuccess //call function after success
+    });
+    });
+    });
+
+    function afterSuccess()
+    {
+    $('#upload_form').resetForm();  // reset form
+    $('#uploadButton').removeAttr('disabled'); //enable submit button
+}
+</script>
+</body>
+</html>
